@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
+ * 支付controller
+ *
  * @author: dxf
  * @date: 2021-01-11 22:15:40
  */
@@ -20,7 +22,7 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public CommonResult create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
         log.info("插入结果：{}", result);
@@ -29,10 +31,10 @@ public class PaymentController {
                 new CommonResult(200, "成功") : new CommonResult(444, "插入失败");
     }
 
-    @GetMapping("getPaymentById")
-    public CommonResult<Payment> getPaymentById(@RequestParam("id") Long id) {
+    @GetMapping("/getPaymentById/{id}")
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment result = paymentService.getPaymentById(id);
-
+        log.info("查询结果：" + result);
         return new CommonResult<Payment>(200, "成功", result);
     }
 }

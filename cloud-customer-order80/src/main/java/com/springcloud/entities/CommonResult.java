@@ -31,5 +31,4 @@ public class CommonResult<T> {
         this.code = code;
         this.message = message;
     }
-
 }
