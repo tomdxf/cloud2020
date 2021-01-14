@@ -2,10 +2,10 @@ package com.springcloud.controller;
 
 import com.springcloud.entities.CommonResult;
 import com.springcloud.entities.Payment;
-import com.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import com.springcloud.service.PaymentService;
 
 import javax.annotation.Resource;
 
@@ -32,7 +32,7 @@ public class PaymentController {
         log.info("插入结果：{}", result);
 
         return result > 0 ?
-                new CommonResult(200, "成功,serverPort: " + serverPort) : new CommonResult(444, "插入失败,serverPort: " + serverPort );
+                new CommonResult(200, "成功,serverPort: " + serverPort) : new CommonResult(444, "插入失败,serverPort: " + serverPort);
     }
 
     @GetMapping("/getPaymentById/{id}")

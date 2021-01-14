@@ -1,3 +1,5 @@
 /.idea/
-/cloud-provider-payment8001/target/
+/target/**
 /logs/
+*.iml
+/cloud-customer-order80/target/
