@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.springcloud.service.PaymentService;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 支付controller
@@ -40,5 +41,15 @@ public class PaymentController {
         Payment result = paymentService.getPaymentById(id);
         log.info("查询结果：" + result);
         return new CommonResult<Payment>(200, "成功,serverPort: " + serverPort, result);
+    }
+
+    @GetMapping("/feign/timeout")
+    public String paymentFeignTimeOut(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 }
