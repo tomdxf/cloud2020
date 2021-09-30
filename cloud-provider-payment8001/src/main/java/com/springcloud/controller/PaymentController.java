@@ -77,4 +77,17 @@ public class PaymentController {
     }
 
 
+    @GetMapping("/get/{id}")
+    public CommonResult<Payment> get(@PathVariable("id") Long id) {
+        Payment result = paymentService.getPaymentById(id);
+        log.info("查询结果：" + result);
+        return new CommonResult<Payment>(200, "成功,serverPort: " + serverPort, result);
+    }
+
+    @GetMapping("/lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
+
+
 }
